@@ -964,7 +964,7 @@ The dashboard transforms the Gold Lakehouse analytical data into meaningful busi
 <h3>Dashboard Screenshot</h3>
 
 <p align="center">
-  <img src="images/learning-analytics-dashboard.png" alt="AI-Powered Learning Analytics Dashboard" width="100%">
+  <img src="solution_architecture/AI_Powered_Learning_Ecosystem_solution_dashboard.png" alt="AI-Powered Learning Analytics Dashboard" width="100%">
 </p>
 
 <p><i>Replace images/learning-analytics-dashboard.png with the path of your actual Power BI dashboard screenshot.</i></p>
