@@ -276,7 +276,6 @@ The project follows a modern Microsoft Fabric architecture that combines data in
   <img src="solution_architecture/ai_powered_learning_ecosystem_diagram.jpg" alt="Microsoft Fabric Learning Ecosystem Architecture" width="100%">
 </p>
 
-<p><i>Replace images/architecture.png with the path of your actual architecture diagram.</i></p>
 
 <h3>Architecture Components</h3>
 
