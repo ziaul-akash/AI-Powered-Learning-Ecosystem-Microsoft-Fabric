@@ -1,0 +1,131 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "GetMetadata",
+        "typeProperties": {
+          "datasetSettings": {
+            "type": "DelimitedText",
+            "typeProperties": {
+              "location": {
+                "type": "AzureBlobFSLocation",
+                "fileSystem": "lms-fabric-project",
+                "folderPath": "raw"
+              },
+              "columnDelimiter": ",",
+              "quoteChar": "\"",
+              "escapeChar": "\\",
+              "firstRowAsHeader": true
+            },
+            "schema": [],
+            "externalReferences": {
+              "connection": "2285729c-7dd9-443d-ac7f-1269371b52fe"
+            },
+            "annotations": []
+          },
+          "fieldList": [
+            "childItems"
+          ],
+          "storeSettings": {
+            "type": "AzureBlobFSReadSettings",
+            "recursive": true,
+            "enablePartitionDiscovery": false,
+            "modifiedDatetimeStart": {
+              "value": "@startOfDay(utcNow())",
+              "type": "Expression"
+            },
+            "modifiedDatetimeEnd": {
+              "value": "@utcNow()",
+              "type": "Expression"
+            }
+          },
+          "formatSettings": {
+            "type": "DelimitedTextReadSettings"
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get Metadata1",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@activity('Get Metadata1').output.childItems",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "2502942d-3d8e-be0c-43e1-ff028fe47148",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "today_file": {
+                    "value": {
+                      "value": "@item().name",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "processed_date": {
+                    "value": {
+                      "value": "@formatDateTime(utcNow(), 'yyyy-MM-dd')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_account": {
+                    "value": "fabricdatalake685800",
+                    "type": "string"
+                  },
+                  "source_container": {
+                    "value": "lms-fabric-project",
+                    "type": "string"
+                  },
+                  "srs_relative_path": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "destination_account": {
+                    "value": "fabricdatalake685800",
+                    "type": "string"
+                  },
+                  "destination_container": {
+                    "value": "lms-fabric-project",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Raw to Landing",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "ForEach1",
+        "dependsOn": [
+          {
+            "activity": "Get Metadata1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

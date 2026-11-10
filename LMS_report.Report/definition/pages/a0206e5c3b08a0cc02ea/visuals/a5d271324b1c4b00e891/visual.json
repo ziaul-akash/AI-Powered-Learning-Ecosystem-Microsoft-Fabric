@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "a5d271324b1c4b00e891",
+  "position": {
+    "x": 181.25,
+    "y": 206.25,
+    "z": 5,
+    "height": 255,
+    "width": 507.5,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "pieChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_student_performance"
+                    }
+                  },
+                  "Property": "Final_Grade"
+                }
+              },
+              "queryRef": "fact_student_performance.Final_Grade",
+              "nativeQueryRef": "By Students",
+              "active": true,
+              "displayName": "By Students"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_student_performance"
+                        }
+                      },
+                      "Property": "Student_ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(fact_student_performance.Student_ID)",
+              "nativeQueryRef": "Final Grades",
+              "displayName": "Final Grades"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_student_performance"
+                      }
+                    },
+                    "Property": "Student_ID"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "be5c6183f0798f948f1e",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_student_performance"
+                  }
+                },
+                "Property": "Student_ID"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "55e80e3c39c1aeb08a1d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_student_performance"
+              }
+            },
+            "Property": "Final_Grade"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

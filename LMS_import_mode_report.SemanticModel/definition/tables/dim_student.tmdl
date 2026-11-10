@@ -1,0 +1,95 @@
+table dim_student
+	lineageTag: 961983c5-c497-4c58-906e-e01b07f98340
+
+	column Student_ID
+		dataType: string
+		lineageTag: 32a8f950-4cde-4a33-8931-a7b597a89f4c
+		summarizeBy: none
+		sourceColumn: Student_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 134e95eb-2014-48ba-b1b9-df4b99427663
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 47bb1363-8e8f-4c67-831f-281675ce4f98
+		summarizeBy: none
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: cdbea186-b163-42c7-8999-9454840faaec
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Parent_Involvement
+		dataType: string
+		lineageTag: 40d4c6ea-e000-4ee5-a485-ad157e11a7fd
+		summarizeBy: none
+		sourceColumn: Parent_Involvement
+
+		annotation SummarizationSetBy = Automatic
+
+	column Demographic_Group
+		dataType: string
+		lineageTag: ef5194ad-e685-44d7-a9e5-9e515812eb23
+		summarizeBy: none
+		sourceColumn: Demographic_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Internet_Access
+		dataType: string
+		lineageTag: 79cd83db-cfca-4e63-a048-a91e3d917296
+		summarizeBy: none
+		sourceColumn: Internet_Access
+
+		annotation SummarizationSetBy = Automatic
+
+	column Learning_Disabilities
+		dataType: string
+		lineageTag: c72cff70-f483-45a2-80c1-c9fb127bb8dc
+		summarizeBy: none
+		sourceColumn: Learning_Disabilities
+
+		annotation SummarizationSetBy = Automatic
+
+	column Preferred_Learning_Style
+		dataType: string
+		lineageTag: 0fa7e37f-03ca-4577-822c-42eb48ba0286
+		summarizeBy: none
+		sourceColumn: Preferred_Learning_Style
+
+		annotation SummarizationSetBy = Automatic
+
+	column Language_Proficiency
+		dataType: string
+		lineageTag: f332c59b-075e-46ba-9d10-d1cb3a78aaa0
+		summarizeBy: none
+		sourceColumn: Language_Proficiency
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_student = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("qbcobvtnhwqehlqfy623hn6e6i-j6xshzfhrcwepkl253suounuhe.datawarehouse.fabric.microsoft.com", "LH_Gold"),
+				    dbo_dim_student = Source{[Schema="dbo",Item="dim_student"]}[Data]
+				in
+				    dbo_dim_student
+
+	annotation PBI_ResultType = Table
+

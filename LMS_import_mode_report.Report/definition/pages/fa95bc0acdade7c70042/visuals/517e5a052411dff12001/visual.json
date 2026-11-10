@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "517e5a052411dff12001",
+  "position": {
+    "x": 181.25,
+    "y": 461.25,
+    "z": 6,
+    "height": 258.75,
+    "width": 490,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_student_performance"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "fact_student_performance.Status",
+              "nativeQueryRef": "Students",
+              "active": true,
+              "displayName": "Students"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_student_performance"
+                        }
+                      },
+                      "Property": "Student_ID"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "CountNonNull(fact_student_performance.Student_ID)",
+              "nativeQueryRef": "Completion Status",
+              "displayName": "Completion Status"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_student_performance"
+                      }
+                    },
+                    "Property": "Student_ID"
+                  }
+                },
+                "Function": 2
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

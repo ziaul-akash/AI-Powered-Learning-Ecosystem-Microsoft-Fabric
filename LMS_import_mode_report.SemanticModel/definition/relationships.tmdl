@@ -1,0 +1,9 @@
+relationship AutoDetected_28434c2e-90f4-4c9e-a766-6c7ee2c0a341
+	fromColumn: fact_student_performance.Course_ID
+	toColumn: dim_course.Course_ID
+
+relationship AutoDetected_ee549243-c093-4007-95b9-4396e4883b03
+	crossFilteringBehavior: bothDirections
+	fromColumn: fact_student_performance.Student_ID
+	toColumn: dim_student.Student_ID
+

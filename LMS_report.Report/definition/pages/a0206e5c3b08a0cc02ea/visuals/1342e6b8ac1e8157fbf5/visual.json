@@ -1,0 +1,216 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "1342e6b8ac1e8157fbf5",
+  "position": {
+    "x": 688.75,
+    "y": 195,
+    "z": 8,
+    "height": 266.25,
+    "width": 571.25,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "decompositionTreeVisual",
+    "query": {
+      "queryState": {
+        "Analyze": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_student"
+                        }
+                      },
+                      "Property": "Student_ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(dim_student.Student_ID)",
+              "nativeQueryRef": "Total Students",
+              "displayName": "Total Students"
+            }
+          ]
+        },
+        "ExplainBy": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_student"
+                    }
+                  },
+                  "Property": "Preferred_Learning_Style"
+                }
+              },
+              "queryRef": "dim_student.Preferred_Learning_Style",
+              "nativeQueryRef": "Preferred_Learning_Style",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_student"
+                    }
+                  },
+                  "Property": "Parent_Involvement"
+                }
+              },
+              "queryRef": "dim_student.Parent_Involvement",
+              "nativeQueryRef": "Parent_Involvement",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_student"
+                      }
+                    },
+                    "Property": "Student_ID"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "ExplainBy"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "dim_student.Preferred_Learning_Style"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_student"
+                    }
+                  },
+                  "Property": "Preferred_Learning_Style"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "dim_student.Parent_Involvement"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Auditory'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
+    "objects": {
+      "tree": [
+        {
+          "properties": {
+            "effectiveBarsPerLevel": {
+              "expr": {
+                "Literal": {
+                  "Value": "3L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "cdb80d82c7941f6b3c8c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_student"
+              }
+            },
+            "Property": "Preferred_Learning_Style"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d1dfbdc7da6fe2f1edc5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_student"
+              }
+            },
+            "Property": "Parent_Involvement"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ba2059816bfc252a91db",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_student"
+                  }
+                },
+                "Property": "Student_ID"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
